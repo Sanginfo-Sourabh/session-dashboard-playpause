@@ -1,0 +1,104 @@
+.venue-element{
+    background:url('../images/background.jpg');
+    position:relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height:calc(25vw/1.6);
+    margin-bottom:30%;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.venue-element:hover{
+    -webkit-animation: breath 0.5s linear;
+    animation-fill-mode: forwards;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(67,89,102,0.5);
+    z-index: 2;
+}
+
+.venue-element:hover .overlay{
+    background-color:rgba(67,89,102,0.9);
+}
+
+.card-overlay-content{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    z-index:4;
+}
+
+.venue-header-title{
+    margin-top:1.25em !important;
+    color:#fff;
+    font-size:18px;
+    position:relative;
+}
+
+.venue-header-subtitle{
+    color:#fff;
+    font-size:12px;
+    margin-top:calc(25% - 10px);
+    margin-right: -150%;
+}
+
+.venue-element:hover .venue-header-subtitle{
+    visibility:visible;
+    -webkit-animation: animateLeft 0.3s linear;
+    animation-fill-mode: forwards;
+}
+
+.venue-header-title:after{
+    content:'';
+    background:#fff;
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0%;
+    top:50px;
+}
+
+.venue-element:hover .venue-header-title:after{
+    -webkit-animation: animateRight 0.3s linear;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes breath {
+    0% { background-position-x: center}
+    100% { background-position-x: -125px }   
+}
+
+@-webkit-keyframes animateRight{
+    0% { width: 0%}
+    100% { width: 100% }   
+}
+
+@-webkit-keyframes animateLeft{
+    0% { margin-right: -150%}
+    100% { margin-right: 0 }   
+}
+
+@media(max-width: 992px){
+   .venue-element{
+      height:calc(100vw/1.6);
+      margin-bottom:10%;
+   }
+}
+
+@media(min-width: 768px) and (max-width: 1200px){
+   .venue-element{
+      height:calc(50vw/1.6);
+      margin-bottom:10%;
+   }
+}

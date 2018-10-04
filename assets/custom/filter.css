@@ -1,0 +1,127 @@
+.custom-wrapper{
+  display:block;
+}
+
+.form-lable
+{
+    text-align:left!important;
+  }
+  
+.resultcard
+{
+    cursor:pointer;
+    }
+    
+.borderthin
+{
+    border:1px solid gray;
+    }
+.btn-rounded-custom {
+  border-radius: 2em;
+  padding: 3px 6px;
+}
+.btn-default {
+  color: #797979;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.circleBase {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+
+.circlewhite {
+     width: 20px;
+    height: 20px;
+    background: white;
+    border: 1px solid white;
+}
+.circleblue {
+     width: 20px;
+    height: 20px;
+    background: blue;
+    border: 1px solid #5B9BD5;
+}
+.circlered {
+    width: 20px;
+    height: 20px;
+    background: red;
+    border: 1px solid #FF0000;
+}
+.circlegreen {
+    width: 20px;
+    height: 20px;
+    background: green;
+    border: 1px solid #388E3C;
+}
+
+header .website-heading h2 {
+    margin: 0px;
+    position: absolute;
+    z-index: 9;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+}
+
+.daterangepicker .calendar-table {
+    border: none;
+    padding: 4px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.parseHeading{
+  display:none;
+}
+
+@media(max-width:767px){
+    .venue-topnav{
+      background:#435966 !important;
+    }
+    .website-heading{
+      text-align:center;
+      margin:0 auto 30px;
+    }
+    header .website-heading h2{
+      position:relative;
+      top:0px;
+      left:0px;
+      transform: translate(0);
+      font-size:1.4em;
+    }
+    .mobile-topbar{
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translatex(-50%);
+    }
+    .logo-img{
+      margin-top:0px !important;
+    }
+
+    .filter-sort-button{
+      margin-right:0px;
+      padding: 6px 9px;
+    }
+
+    .filter-back-button{
+      padding: 6px 9px;
+    }
+    .parseHeading h4{
+      font-size:16px;
+    }
+
+}
+
+@media (max-width:340px){
+  .filter-sort-button, .filter-back-button{
+    padding:5px;
+  }
+  .parseHeading h4 {
+    font-size: 14px;
+  }
+}

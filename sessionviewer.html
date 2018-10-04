@@ -1,0 +1,470 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sessions Dashboard">
+    <meta name="author" content="Sessions Dashboard">
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <title>Sessions Dashboard</title>
+
+    <!--Morris Chart CSS -->
+    <!-- <link rel="stylesheet" href="assets/plugins/morris/morris.css"> -->
+    <!-- Plugins css-->
+    <link href="assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/select2/dist/css/select2.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/select2/dist/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="assets/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="assets/plugins/toastr/toastr-custom.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="assets/custom/bootstrap-slider.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/custom/custom.css" rel="stylesheet" type="text/css" />
+    <link href="https://api.intripper.com/v15/websdk/intripperMap.css" rel="stylesheet" type="text/css" />
+    <link href="assets/custom/session.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="assets/js/modernizr.min.js"></script>
+    <style>
+        #toast-container{
+            top: 25% !important;
+            right: auto !important;
+            bottom: auto !important;
+            left: 3% !important;
+            width: auto;
+
+
+                /*snackbar*/
+                /* top: 62% !important;
+                right: 12% !important;
+                bottom: auto !important;
+                left: auto !important; */
+        }
+                
+                .logo-text{
+                    font-family: 'karla', sans-serif !important;
+                }
+                .logo-text{
+                    font-size:22px;
+                    margin-top:10px;
+                    margin-bottom:0;
+                }
+               
+                /* .custom-container{
+                    padding-right:8.33%;
+                } */
+                .logo-img{
+                    margin-top:22px;
+                    width:98px;
+                } 
+                .venue-topnav{
+                    background:#435966;
+                    box-shadow:none !important;
+                }
+                .daterangepicker .calendar-table {
+                    border: none;
+                    padding: 4px;
+                    border-radius: 4px;
+                    background: #fff;
+                }
+                @media(max-width:767px){
+                    #toast-container{
+                        top: 80px !important;
+                        right: 0 !important;
+                        bottom: auto !important;
+                        left: 0 !important;
+                        width: calc(100% - 80px);
+                        margin: auto;
+                    }
+
+                    #toast-container .toast{
+                        width:auto !important;
+                    }
+                }
+                /* .label-inverse{
+                    background-color: #D05454 !important;
+                } */
+                #map-logo {
+                    position: absolute;
+                    top:5px;
+                    /* top: 55px; */
+                    right: 15px;
+                    z-index: 99;
+                    width: 75px;
+                    display: inline;
+                }
+
+                /*---------------------------------Bootstrap-Slider Css---------------------------*/
+                #rangeSlider{
+                    display:none !important;
+                }
+                #sessionSlider{
+                    width:100%;
+                    margin-bottom:0.75em;
+                }
+
+                #sessionSlider .slider-track{
+                    height:8px !important;
+                }
+
+                #sessionSlider .slider-track-high, #sessionSlider .slider-track-low {
+                    background: #ebeff2;
+                }
+
+                #sessionSlider .slider-selection{
+                    background: #188ae2;
+                }
+
+                #sessionSlider .slider-handle{
+                    border:1px solid #1e72bb;
+                    cursor:pointer;
+                }
+
+                #sessionSlider .slider-handle:focus{
+                    -webkit-box-shadow: 0 0 0 1px rgba(24,138,226,0.6), 0 0 0 6px rgba(78, 149, 204, 0.55);
+                    box-shadow: 0 0 0 1px rgba(24,138,226,0.6), 0 0 0 6px rgba(78, 149, 204, 0.55);
+                }
+
+            </style>
+</head>
+
+<body>
+    <!-- Navigation Bar-->
+    <!-- Navigation Bar-->
+     <header id="topnav" class="custom-topnav">
+        <div class="topbar-main">
+           <div class="container-fluid custom-container">
+                <!-- LOGO -->
+                <div class="topbar-left hidden-xs">
+                    <h1 class="logo logo-text">Web Dashboard</h1>
+                </div>
+                <!-- End Logo container-->
+                <div class="website-heading">
+                    <h2></h2>
+                </div>
+                <div class="topbar-left pull-right hidden-xs">
+                    <a href="https://www.intripper.com/" class="logo logo-img" target="_blank"><span><img class="img-responsive"
+                                src="assets/images/map-intripper.png"></span></a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- End Navigation Bar-->
+    <!-- End Navigation Bar-->
+    <div class="session-content custom-wrapper">
+        <div class="container-fluid custom-container mobile-container">
+
+            <!-- Page-Title -->
+            <div class="row hidden-xs">
+                <div class="col-md-8">
+                    <h4 class="page-title custom-page-title">Session Visualizer</h4>
+                </div>
+                <div class="col-md-4 pull-right m-t-20">
+                    <button id="bckToFilter" onclick="window.location.href = 'filter.html';" class="btn btn-icon waves-effect waves-light btn-primary m-b-5 pull-right">
+                        <i id="btnBack" class="fa fa-chevron-left m-r-5"></i><span>Back</span> </button>
+                </div>
+
+            </div>
+
+
+            <div class="row mobile-map-container">
+                <div class="col-md-8 mobile-map-nopad">
+                    <div class="card-box" id="map-container">
+                        <!-- <div id="map" style="position: relative; height: 500px; width: inherit; "> -->
+                        <div style="position: relative;">
+                            <div id="map" style="height:500px;">
+                            </div>
+                            <div id="mapoverlay" style="height: 500px;background: rgba(0,0,0,0.6);z-index: 999;position: absolute;top: 0px; left: 0px;width: 100%;visibility: hidden;"></div>
+                        </div>
+
+                    </div>
+                </div><!-- end col -->
+                <div class="col-md-4">
+
+                    <div class="card-box" id="session-container">
+                        <div>
+                            <div class="pull-right">
+                                <span id="sessionRating" class='label label-danger pull-right m-t-0'>Unknown</span>
+                            </div>
+                            <h4 id="sessionName" class="header-title m-t-0 m-b-20 text-purple">Session Detail</h4>
+                        </div>
+                        <table class="table m-0" style="border:1px;">
+                            <tbody>
+                                <tr>
+                                    <th>Device</th>
+                                    <td id="device"></td>
+                                </tr>
+                                <tr>
+                                    <th>Device ID</th>
+                                    <td id="deviceId"></td>
+                                </tr>
+                                <tr>
+                                    <th>Platform</th>
+                                    <td id="platform"></td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td id="sessionDate"></td>
+                                </tr>
+                                <tr>
+                                    <th>No. Of Readings</th>
+                                    <td id="readingCount"></td>
+                                </tr>
+                                <tr>
+                                    <th>Start Time</th>
+                                    <td id="statTime"></td>
+                                </tr>
+                                <tr>
+                                    <th>End Time</th>
+                                    <td id="endTime"></td>
+                                </tr>
+                                <tr>
+                                    <th>Session Duration</th>
+                                    <td id="sessionDuration"></td>
+                                </tr>
+                                <tr>
+                                    <th>TTFF</th>
+                                    <td id="timeToFirstFix"></td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <th>API Key</th>
+                                    <td id="apiKey"></td>
+                                </tr>
+                                <tr>
+                                    <th>App</th>
+                                    <td id="packageName"></td>
+                                </tr>
+                                <tr>
+                                    <th>App Version</th>
+                                    <td id="appVersion"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <table class="table m-0">
+                            <tr>
+                                <td>
+                                    Accuracy (in Meters)
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped m-0">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">&#x3C; 7 m</th>
+                                    <th style="text-align:center;">&#x3C; 15 m</th>
+                                    <th style="text-align:center;">&#x3E; 15 m</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <div id="goodPercent">
+                                            0%
+                                        </div>
+                                        <!-- <div style="width: 100%; height: 3px; background-color: #193B50; margin: auto;">
+                                        </div> -->
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <div id="okPercent">
+                                            0%
+                                        </div>
+                                        <!-- <div style="width: 100%; height: 3px; background-color: #2D6A8F; margin: auto;">
+                                        </div> -->
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <div id="badPercent">
+                                            0%
+                                        </div>
+                                        <!-- <div style="width: 100%; height: 3px; background-color: #3C8CBE; margin: auto;">
+                                        </div> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <div class="mobile-progress">
+                            <!-- <div class="progress">
+                                <div id="playbackProgress" class="progress-bar progress-bar-warning" aria-valuemin="0"
+                                    aria-valuemax="100" role="progressbar">
+                                    <span class="sr-only">95% Complete</span>
+                                </div>
+                            </div> -->
+                            
+                              <input id="rangeSlider" class="range-slider" />
+                              
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="padding-top:2px;padding-bottom:2px;">
+                                        <strong>Accuracy</strong>
+                                        <!--<h4 style="margin:5px;">Accuracy</h4>-->
+                                    </td>
+                                    <td id="currentAccuracy" style="padding-left: 10px;" colspan="2">
+                                        0 meters
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:2px;padding-bottom:2px;">
+                                        <strong>Elapsed Time</strong>
+                                    </td>
+                                    <td id="elapsedTime" style="padding-left:10px;">
+                                        0 seconds
+                                    </td>
+                                    <td style="text-align:center">
+                                        <button id="playPauseButton" onclick="onPlayPauseClicked();" class="btn btn-icon waves-effect waves-light btn-primary m-b-5 pull-right">
+                                            <i id="playPause" class="fa fa-play"></i> </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:2px;padding-bottom:2px;">
+                                        <strong>DFLR</strong>
+                                    </td>
+                                    <td id="dflr" style="padding-left: 10px;" colspan="2">
+                                        0 meters
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="padding-top:2px;padding-bottom:2px;">
+                                    <strong>Accuracy</strong>
+                                    <!--<h4 style="margin:5px;">Accuracy</h4>-->
+                                </td>
+                                <td id="currentAccuracy" style="padding-left: 10px;">
+                                    0 meters
+                                </td>
+                                <td style="text-align:center">
+                                    <button id="rewindButton" onclick="onRewindClicked();" class="btn btn-icon waves-effect waves-light btn-primary m-b-5 pull-right">
+                                        <i id="rewind" class="fa fa-backward"></i> </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top:2px;padding-bottom:2px;">
+                                    <strong>Elapsed Time</strong>
+                                </td>
+                                <td id="elapsedTime" style="padding-left:10px;">
+                                    0 seconds
+                                </td>
+                                <td style="text-align:center">
+                                    <button id="playPauseButton" onclick="onPlayPauseClicked();" class="btn btn-icon waves-effect waves-light btn-primary m-b-5 pull-right">
+                                        <i id="playPause" class="fa fa-play"></i> </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top:2px;padding-bottom:2px;">
+                                    <strong>DFLR</strong>
+                                </td>
+                                <td id="dflr" style="padding-left: 10px;">
+                                    0 meters
+                                </td>
+                                <td style="text-align:center">
+                                    <button id="forwardButton" onclick="onForwardClicked();" class="btn btn-icon waves-effect waves-light btn-primary m-b-5 pull-right">
+                                        <i id="forward" class="fa fa-forward"></i> </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--
+                                        <table class="table m-0">
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <button id="playPauseButton" onclick="onPlayPauseClicked();" class="btn btn-icon waves-effect waves-light btn-primary m-b-5"> <i id="playPause" class="fa fa-play"></i> </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        -->
+                        <!--
+                                        <br />
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                            has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                            printer took a galley of type and scrambled it to make a type specimen book.
+                                        </p>
+                                        -->
+                    </div>
+                </div><!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+
+    </div>
+
+
+    <!-- jQuery  -->
+    <!-- <script src="assets/js/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- <script src="assets/js/bootstrap.min.js"></script> -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/detect.js"></script>
+    <script src="assets/js/fastclick.js"></script>
+
+    <script src="assets/js/jquery.slimscroll.js"></script>
+    <script src="assets/js/jquery.blockUI.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+
+    <!-- KNOB JS -->
+    <!--[if IE]>
+    <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+    <![endif]-->
+    <!-- Plugins Js -->
+    <script src="assets/plugins/switchery/switchery.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+    <script src="assets/plugins/select2/dist/js/select2.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/moment/moment.js" type="text/javascript"></script>
+    <script src="assets/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/toastr/toastr.min.js"></script>
+    <!-- <script src="assets/plugins/toastr/toastr-custom.js"></script> -->
+
+    <!-- App js -->
+    <script src="assets/js/jquery.core.js"></script>
+    <script src="assets/js/jquery.app.js"></script>
+
+    <script src="https://npmcdn.com/parse@1.10.0/dist/parse.min.js"></script>
+    <script src="assets/custom/constants.js" type="text/javascript"></script>
+    <script src="assets/custom/bootstrap-slider.min.js" type="text/javascript"></script>
+    <script src="assets/custom/custom.js?v1.0"></script>
+    <script src="assets/custom/intripperMap.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxqBNk_2AvTJxE8C1XPZqBAb7RrvaiJdk&callback=initMap&libraries=geometry"
+        async defer></script>
+    <script src="assets/custom/sessionviewer.js?v1.0" type="text/javascript"></script>
+    
+</body>
+
+</html>

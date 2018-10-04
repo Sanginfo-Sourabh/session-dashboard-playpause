@@ -1,0 +1,91 @@
+header .website-heading h2 {
+    margin: 0px;
+    position: absolute;
+    z-index: 9;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+}
+
+.custom-wrapper {
+    display: block;
+}
+@media(max-width:767px){
+	.custom-topnav{
+      background:#435966 !important;
+      min-height:50px !important;
+    }
+    .website-heading {
+	    text-align: center;
+	    margin: 0 auto;
+	}
+	header .website-heading h2 {
+	    position: relative;
+	    top: 5px;
+	    left: 0px;
+	    transform: translate(0);
+	    font-size: 1.4em;
+	}
+
+	#map-container{
+		padding:0;
+	}	
+	#map{
+		height:calc(100vh - 230px) !important;
+	}
+	#session-container{
+		position:relative;
+		padding-top:160px;
+	}
+
+	#sessionName{
+		padding-left:5px;
+	}
+
+	.mobile-progress{
+		position: absolute;
+	    top: 10px;
+	    width: calc(100% - 47px);
+	    left: 27px;
+	}
+
+	.session-content{
+		margin-top:55px !important;
+	}
+
+	.session-content .mobile-container,.session-content .mobile-map-nopad  {
+		padding:0;
+	}
+
+	.session-content .mobile-map-container{
+		margin:0px;
+	}
+
+	/*--------------------------Commented for forward backward button------------------------*/
+
+	/*.mobile-progress table{
+		margin-top:45px;
+	}
+
+	#playPauseButton{
+		position: absolute;
+	    top: 23px;
+	    left: 24%;
+	    width: 125px;
+	}
+
+	#rewindButton{
+		position: absolute;
+	    top: 33px;
+	    left: 26px;
+	}
+
+	#forwardButton{
+		position: absolute;
+    	top: 35px;
+    	right: 20px
+	}*/
+
+}
